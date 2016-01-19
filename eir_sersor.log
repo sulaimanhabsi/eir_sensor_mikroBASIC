@@ -1,0 +1,13 @@
+0	1	mBPic.exe -MSF -DBG -pP16F887 -Y -DL -O11111114 -fo8 -N"D:\work_2\implementation\hardware\platform\pic\projects\eir_sensor_v01_00_a\eir_sersor.mbppi" -SP"E:\Users\Public\Documents\Mikroelektronika\mikroBasic PRO for PIC\defs\" -SP"E:\Users\Public\Documents\Mikroelektronika\mikroBasic PRO for PIC\Uses\P16\" -SP"D:\work_2\implementation\hardware\platform\pic\projects\eir_sensor_v01_00_a\" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_String.mcl" "__Lib_CStdlib.mcl" "__Lib_MemManager.mcl" "__Lib_Conversions.mcl" "__Lib_Time.mcl" "__Lib_Trigon.mcl" "__Lib_Trigonometry.mcl" "__Lib_Button.mcl" "__Lib_Keypad4x4.mcl" "__Lib_Manchester.mcl" "__Lib_OneWire.mcl" "__Lib_PS2.mcl" "__Lib_Sound.mcl" "__Lib_SoftI2C.mcl" "__Lib_SoftSPI.mcl" "__Lib_SoftUART.mcl" "__Lib_ADC_88X.mcl" "__Lib_EEPROM.mcl" "__Lib_FLASH_RW.mcl" "__Lib_I2C_c34.mcl" "__Lib_PWM_c21.mcl" "__Lib_SPI_c345.mcl" "__Lib_UART_c67.mcl" "__Lib_PortExpander.mcl" "__Lib_CANSPI.mcl" "__Lib_CF.mcl" "__Lib_GlcdFonts.mcl" "__Lib_Glcd.mcl" "__Lib_LcdConsts.mcl" "__Lib_Lcd.mcl" "__Lib_RS485.mcl" "__Lib_S1D13700.mcl" "__Lib_T6963C.mcl" "__Lib_T6963C_Consts.mcl" "__Lib_SPIGlcd.mcl" "__Lib_SPILcd.mcl" "__Lib_SPILcd8.mcl" "__Lib_SPIT6963C.mcl" "__Lib_SPIT6963C_Const.mcl" "__Lib_EthEnc28j60.mcl" "__Lib_EthEnc24j600.mcl" "__Lib_TouchPanel.mcl" "eir_sersor.mbas"	 
+diagnostics: 0	154	Available RAM: 352 [bytes], Available ROM: 8192 [bytes]	 
+diagnostics: 0	132	Compilation Started	D:\work_2\implementation\hardware\platform\pic\projects\eir_sensor_v01_00_a\eir_sersor.mbas
+hint: 1	1015	Hint: Compiling unit "D:\work_2\implementation\hardware\platform\pic\projects\eir_sensor_v01_00_a\eir_sersor.mbas"	eir_sersor.mbas
+hint: 81	1010	Hint: Unit "eir_sersor.mbas" has been recompiled	eir_sersor.mbas
+diagnostics: 0	133	Compiled Successfully	D:\work_2\implementation\hardware\platform\pic\projects\eir_sensor_v01_00_a\eir_sersor.mbas
+diagnostics: 0	138	All files Compiled in 16 ms	 
+hint: 0	1143	Used RAM (bytes): 37 (11%)  Free RAM (bytes): 315 (89%)	Used RAM (bytes): 37 (11%)  Free RAM (bytes): 315 (89%)
+hint: 0	1143	Used ROM (program words): 841 (10%)  Free ROM (program words): 7351 (90%)	Used ROM (program words): 841 (10%)  Free ROM (program words): 7351 (90%)
+diagnostics: 0	144	Project Linked Successfully	eir_sersor.mbppi
+diagnostics: 0	139	Linked in 561 ms	 
+diagnostics: 0	140	Project 'eir_sersor.mbppi' completed: 904 ms	 
+diagnostics: 0	103	Finished successfully: 18 Jan 2016, 19:27:46	eir_sersor.mbppi

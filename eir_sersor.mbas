@@ -1,0 +1,81 @@
+program eir_sersor
+
+ 'Lcd module connections
+dim LCD_RS as sbit at RB4_bit
+    LCD_EN as sbit at RB5_bit
+    LCD_D4 as sbit at RB0_bit
+    LCD_D5 as sbit at RB1_bit
+    LCD_D6 as sbit at RB2_bit
+    LCD_D7 as sbit at RB3_bit
+
+    LCD_RS_Direction as sbit at TRISB4_bit
+    LCD_EN_Direction as sbit at TRISB5_bit
+    LCD_D4_Direction as sbit at TRISB0_bit
+    LCD_D5_Direction as sbit at TRISB1_bit
+    LCD_D6_Direction as sbit at TRISB2_bit
+    LCD_D7_Direction as sbit at TRISB3_bit
+' End Lcd module connections
+
+
+dim SensorLow as byte' //' Raw temp. low byte
+SensorHigh as byte '//' Raw temp. high byte
+SensorRaw as word '//' Raw temp. word
+Sensor as word '//' Real temp (floating point)
+SensorString as string[5]
+const MLX90614_TA  = 0x06
+const  MLX90614_TOBJ1  = 0x07
+const  MLX90614_ADDR  = 0x5A
+
+dim PEC as byte '//' Control byte (read but not used)
+
+
+ sub procedure Read_OBJ_temp()
+
+I2C1_Start() '//' issue I2C start signal
+I2C1_Wr(MLX90614_ADDR OR 0x00) '//' send address (device address + W)
+I2C1_Wr(MLX90614_TOBJ1) '//' send command
+I2C1_Repeated_Start() '//' issue I2C signal repeated start
+I2C1_Wr(MLX90614_ADDR OR 0x01) '//' send address (device address + R)
+
+SensorLow = I2C1_Rd(1) '//' Read temp. low byte (acknowledge) PIC FREEZES
+SensorHigh = I2C1_Rd(1)'//' Read temp. high byte (acknowledge) PIC FREEZES
+PEC = I2C1_Rd(1) ' Read PEC (not used) (acknowledge) PIC FREEZES
+I2C1_Stop() ' issue I2C stop signal
+
+SensorRaw = SensorLow OR (SensorHigh <<8 )' //' Build temp. word
+end sub
+
+sub procedure Convert_raw()
+'begin
+Sensor = SensorRaw * 0.02 - 273.15 ' Raw temp to Celsius
+'FloatToStr(Sensor, SensorString) ' Float to string
+WordToStr(Sensor, SensorString)
+
+
+end sub
+
+
+main:
+
+  '   Main program
+  ANSEL=0
+  ANSELH=0
+  TRISB=0
+  PORTB=0
+
+  I2C1_Init(100000) '//' I2C/SMBus Clock speed 100 kHz
+  SETBIT(SSPSTAT, 6) '//' Force MSSP in SMBus mode
+
+  Lcd_init()
+  Lcd_Cmd(_LCD_CLEAR)
+  Lcd_Cmd(_LCD_CURSOR_OFF)
+  loop:
+  Read_OBJ_temp() '//' Read temp.
+  Convert_raw()
+  Lcd_Out(1,1,"object temp")
+  Lcd_Out(2,2,SensorString)
+
+  delay_ms(500)
+  Lcd_Cmd(_LCD_CLEAR)
+  goto loop
+end.
